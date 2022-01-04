@@ -152,7 +152,7 @@ function _CalendarBody<T extends ICalendarEventBase>({
             {hours.map((hour, index) => (
               <HourGuideColumn
                 key={hour}
-                cellHeight={cellHeight}
+                cellHeight={index === 0 ? cellHeight * 1.5 : cellHeight}
                 hour={hour}
                 ampm={ampm}
                 index={index}
@@ -165,7 +165,7 @@ function _CalendarBody<T extends ICalendarEventBase>({
               {hours.map((hour, index) => (
                 <HourGuideCell
                   key={hour}
-                  cellHeight={cellHeight}
+                  cellHeight={index === 0 ? cellHeight * 1.5 : cellHeight}
                   date={date}
                   hour={hour}
                   onPress={_onPressCell}
