@@ -354,11 +354,11 @@ function _CalendarContainer<T extends ICalendarEventBase>({
   const onSwipeHorizontal = (direction: HorizontalDirection) => {
     if (animatePan === true) {
       if ((direction === 'LEFT' && !theme.isRTL) || (direction === 'RIGHT' && theme.isRTL)) {
-        moveNextBody(direction)
+        moveNextBody()
         // recalculate calendar
         onSwipeHorizontalCallback(direction)
       } else {
-        movePrevBody(direction)
+        movePrevBody()
         // recalculate calendar
         onSwipeHorizontalCallback(direction)
       }
@@ -369,7 +369,7 @@ function _CalendarContainer<T extends ICalendarEventBase>({
 
   const onPanLeft = (direction: HorizontalDirection) => {
     if (animatePan === true) {
-      movePrevBody(direction)
+      movePrevBody()
       // recalculate calendar
       onSwipeHorizontalCallback(direction)
     } else {
@@ -379,7 +379,7 @@ function _CalendarContainer<T extends ICalendarEventBase>({
 
   const onPanRight = (direction: HorizontalDirection) => {
     if (animatePan === true) {
-      moveNextBody(direction)
+      moveNextBody()
       // recalculate calendar
       onSwipeHorizontalCallback(direction)
     } else {
