@@ -248,7 +248,7 @@ function _CalendarContainer<T extends ICalendarEventBase>({
 
   React.useEffect(() => {
     const idpres = presentLeftValue.addListener((value) => {
-      currentPresentLeftVal.current = value.value
+      currentPresentLeftVal.current = value?.value
     })
     return () => {
       presentLeftValue.removeListener(idpres)
@@ -270,14 +270,15 @@ function _CalendarContainer<T extends ICalendarEventBase>({
       duration: fadeInDuration,
       useNativeDriver: false,
     }).start(() => {
-      // Step 2: move quickly to the left to starting point
+      // Step 2: recalculate calendar
+      onSwipeHorizontalCallback(direction)
+      // Step 3: move quickly to the right to the starting point
       Animated.timing(presentLeftValue, {
         toValue: presentcurrent - width,
         duration: 0.01,
         useNativeDriver: false,
       }).start(() => {
-        // Step 3: recalculate calendar and show
-        onSwipeHorizontalCallback(direction)
+        // Step 4: show
         Animated.timing(presentLeftValue, {
           toValue: presentcurrent,
           duration: fadeInDuration,
@@ -307,16 +308,17 @@ function _CalendarContainer<T extends ICalendarEventBase>({
       duration: fadeInDuration,
       useNativeDriver: false,
     }).start(() => {
-      // Step 2: move quickly to the right to starting point
+      // Step 2: recalculate calendar
+      onSwipeHorizontalCallback(direction)
+      // Step 3: move quickly to the left to the starting point
       Animated.timing(presentLeftValue, {
         toValue: presentcurrent + width,
         duration: 0.01,
         useNativeDriver: false,
       }).start(() => {
-        // Step 3: recalculate calendar and show
-        onSwipeHorizontalCallback(direction)
+        // Step 4: show
         Animated.timing(presentLeftValue, {
-          toValue: -presentcurrent,
+          toValue: presentcurrent,
           duration: fadeInDuration,
           useNativeDriver: false,
         }).start()
