@@ -280,7 +280,7 @@ function _CalendarContainer<T extends ICalendarEventBase>({
       }).start(() => {
         // Step 4: show
         Animated.timing(presentLeftValue, {
-          toValue: presentcurrent,
+          toValue: presentcurrent + width,
           duration: fadeInDuration,
           useNativeDriver: false,
         }).start()
@@ -318,7 +318,7 @@ function _CalendarContainer<T extends ICalendarEventBase>({
       }).start(() => {
         // Step 4: show
         Animated.timing(presentLeftValue, {
-          toValue: presentcurrent,
+          toValue: presentcurrent - width,
           duration: fadeInDuration,
           useNativeDriver: false,
         }).start()
